@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/tharsis/ethermint/x/feemarket/types"
+	"github.com/oracleNetworkProtocol/ethermint/x/feemarket/types"
 )
 
 func (suite *KeeperTestSuite) TestQueryParams() {

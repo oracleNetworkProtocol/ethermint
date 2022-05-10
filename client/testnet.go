@@ -36,13 +36,13 @@ import (
 	mintypes "github.com/cosmos/cosmos-sdk/x/mint/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/tharsis/ethermint/crypto/hd"
-	"github.com/tharsis/ethermint/server/config"
-	srvflags "github.com/tharsis/ethermint/server/flags"
-	ethermint "github.com/tharsis/ethermint/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/crypto/hd"
+	"github.com/oracleNetworkProtocol/ethermint/server/config"
+	srvflags "github.com/oracleNetworkProtocol/ethermint/server/flags"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 
-	"github.com/tharsis/ethermint/testutil/network"
+	"github.com/oracleNetworkProtocol/ethermint/testutil/network"
 )
 
 var (

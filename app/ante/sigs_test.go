@@ -3,8 +3,8 @@ package ante_test
 import (
 	"math/big"
 
-	"github.com/tharsis/ethermint/tests"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/tests"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 func (suite AnteTestSuite) TestSignatures() {

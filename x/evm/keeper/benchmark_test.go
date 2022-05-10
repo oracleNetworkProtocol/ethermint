@@ -11,9 +11,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
-	ethermint "github.com/tharsis/ethermint/types"
-	"github.com/tharsis/ethermint/x/evm/keeper"
-	"github.com/tharsis/ethermint/x/evm/types"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/keeper"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 func SetupContract(b *testing.B) (*KeeperTestSuite, common.Address) {

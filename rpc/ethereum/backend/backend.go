@@ -33,12 +33,12 @@ import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/tharsis/ethermint/rpc/ethereum/namespaces/eth/filters"
-	"github.com/tharsis/ethermint/rpc/ethereum/types"
-	"github.com/tharsis/ethermint/server/config"
-	ethermint "github.com/tharsis/ethermint/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
-	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
+	"github.com/oracleNetworkProtocol/ethermint/rpc/ethereum/namespaces/eth/filters"
+	"github.com/oracleNetworkProtocol/ethermint/rpc/ethereum/types"
+	"github.com/oracleNetworkProtocol/ethermint/server/config"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
+	feemarkettypes "github.com/oracleNetworkProtocol/ethermint/x/feemarket/types"
 )
 
 // Backend implements the functionality shared within namespaces.

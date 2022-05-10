@@ -16,8 +16,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 
 	"github.com/ethereum/go-ethereum/params"
-	ethermint "github.com/tharsis/ethermint/types"
-	"github.com/tharsis/ethermint/x/evm/types"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 // Keeper grants access to the EVM module state and implements the go-ethereum StateDB interface.

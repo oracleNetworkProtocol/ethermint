@@ -19,12 +19,12 @@ import (
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/tharsis/ethermint/app"
-	ante "github.com/tharsis/ethermint/app/ante"
-	"github.com/tharsis/ethermint/encoding"
-	"github.com/tharsis/ethermint/tests"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
-	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
+	"github.com/oracleNetworkProtocol/ethermint/app"
+	ante "github.com/oracleNetworkProtocol/ethermint/app/ante"
+	"github.com/oracleNetworkProtocol/ethermint/encoding"
+	"github.com/oracleNetworkProtocol/ethermint/tests"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
+	feemarkettypes "github.com/oracleNetworkProtocol/ethermint/x/feemarket/types"
 
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 )

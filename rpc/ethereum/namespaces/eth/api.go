@@ -31,11 +31,11 @@ import (
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/tharsis/ethermint/crypto/hd"
-	"github.com/tharsis/ethermint/rpc/ethereum/backend"
-	rpctypes "github.com/tharsis/ethermint/rpc/ethereum/types"
-	ethermint "github.com/tharsis/ethermint/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/crypto/hd"
+	"github.com/oracleNetworkProtocol/ethermint/rpc/ethereum/backend"
+	rpctypes "github.com/oracleNetworkProtocol/ethermint/rpc/ethereum/types"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 // PublicAPI is the eth_ prefixed set of APIs in the Web3 JSON-RPC spec.

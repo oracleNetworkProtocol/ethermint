@@ -6,9 +6,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
-	"github.com/tharsis/ethermint/x/evm"
-	"github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 func (suite *EvmTestSuite) TestInitGenesis() {

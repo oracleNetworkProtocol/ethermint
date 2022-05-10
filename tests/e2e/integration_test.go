@@ -19,9 +19,9 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient/gethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/tharsis/ethermint/server/config"
-	"github.com/tharsis/ethermint/testutil/network"
-	ethermint "github.com/tharsis/ethermint/types"
+	"github.com/oracleNetworkProtocol/ethermint/server/config"
+	"github.com/oracleNetworkProtocol/ethermint/testutil/network"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
 )
 
 // var _ = Describe("E2e", func() {

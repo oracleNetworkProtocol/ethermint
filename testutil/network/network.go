@@ -47,13 +47,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/tharsis/ethermint/crypto/hd"
-	"github.com/tharsis/ethermint/encoding"
-	"github.com/tharsis/ethermint/server/config"
-	ethermint "github.com/tharsis/ethermint/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/crypto/hd"
+	"github.com/oracleNetworkProtocol/ethermint/encoding"
+	"github.com/oracleNetworkProtocol/ethermint/server/config"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 
-	"github.com/tharsis/ethermint/app"
+	"github.com/oracleNetworkProtocol/ethermint/app"
 )
 
 // package-wide network lock to only allow one test network at a time
