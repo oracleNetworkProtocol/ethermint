@@ -497,7 +497,14 @@ func (vbd EthValidateBasicDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simu
 			return ctx, sdkerrors.Wrap(err, "failed to unpack MsgEthereumTx Data")
 		}
 		params := vbd.evmKeeper.GetParams(ctx)
-		ethFeeAmount := sdk.Coins{sdk.NewCoin(params.EvmDenom, sdk.NewIntFromBigInt(txData.Fee()))}
+
+		//TODO: 新增
+		effectiveTip := txData.GetGasPrice()
+		gasUsed := new(big.Int).SetUint64(txData.GetGas())
+		feeAmt := new(big.Int).Mul(gasUsed, effectiveTip)
+		feeAmt = feeAmt.Div(feeAmt, big.NewInt(1000)).Add(feeAmt, big.NewInt(1))
+
+		ethFeeAmount := sdk.Coins{sdk.NewCoin(params.EvmDenom, sdk.NewIntFromBigInt(feeAmt))}
 
 		authInfo := protoTx.AuthInfo
 		if len(authInfo.SignerInfos) > 0 {
