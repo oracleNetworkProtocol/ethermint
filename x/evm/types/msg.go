@@ -312,10 +312,14 @@ func (msg *MsgEthereumTx) BuildTx(b client.TxBuilder, evmDenom string) (signing.
 	if err != nil {
 		return nil, err
 	}
+	effectiveTip := txData.GetGasPrice()
+	gasUsed := new(big.Int).SetUint64(txData.GetGas())
+	feeAmt := new(big.Int).Mul(gasUsed, effectiveTip)
+	feeAmt = feeAmt.Div(feeAmt, big.NewInt(1000)).Add(feeAmt, big.NewInt(1))
 	fees := sdk.Coins{
 		{
 			Denom:  evmDenom,
-			Amount: sdk.NewIntFromBigInt(txData.Fee()),
+			Amount: sdk.NewIntFromBigInt(feeAmt),
 		},
 	}
 
