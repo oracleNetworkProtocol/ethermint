@@ -9,7 +9,6 @@ import (
 
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	cmath "github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/core"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 )
@@ -57,20 +56,21 @@ func (k Keeper) DeductTxCostsFromUserBalance(
 	// calculate the fees paid to validators based on the effective tip and price
 	effectiveTip := txData.GetGasPrice()
 
-	feeMktParams := k.feeMarketKeeper.GetParams(ctx)
+	// feeMktParams := k.feeMarketKeeper.GetParams(ctx)
 
-	if london && !feeMktParams.NoBaseFee && txData.TxType() == ethtypes.DynamicFeeTxType {
-		baseFee := k.feeMarketKeeper.GetBaseFee(ctx)
-		gasFeeGap := new(big.Int).Sub(txData.GetGasFeeCap(), baseFee)
-		if gasFeeGap.Sign() == -1 {
-			return nil, sdkerrors.Wrapf(sdkerrors.ErrInsufficientFee, "the tx gasfeecap is lower than the tx baseFee: %s (gasfeecap), %s (basefee) ", txData.GetGasFeeCap(), baseFee)
-		}
+	// if london && !feeMktParams.NoBaseFee && txData.TxType() == ethtypes.DynamicFeeTxType {
+	// 	baseFee := k.feeMarketKeeper.GetBaseFee(ctx)
+	// 	gasFeeGap := new(big.Int).Sub(txData.GetGasFeeCap(), baseFee)
+	// 	if gasFeeGap.Sign() == -1 {
+	// 		return nil, sdkerrors.Wrapf(sdkerrors.ErrInsufficientFee, "the tx gasfeecap is lower than the tx baseFee: %s (gasfeecap), %s (basefee) ", txData.GetGasFeeCap(), baseFee)
+	// 	}
 
-		effectiveTip = cmath.BigMin(txData.GetGasTipCap(), gasFeeGap)
-	}
+	// 	effectiveTip = cmath.BigMin(txData.GetGasTipCap(), gasFeeGap)
+	// }
 
 	gasUsed := new(big.Int).SetUint64(txData.GetGas())
 	feeAmt := new(big.Int).Mul(gasUsed, effectiveTip)
+	feeAmt = feeAmt.Div(feeAmt, big.NewInt(1000)).Add(feeAmt, big.NewInt(1))
 
 	fees := sdk.Coins{sdk.NewCoin(denom, sdk.NewIntFromBigInt(feeAmt))}
 
