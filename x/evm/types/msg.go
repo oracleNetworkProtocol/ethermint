@@ -35,6 +35,20 @@ const (
 	TypeMsgEthereumTx = "ethereum_tx"
 )
 
+func GetFeeAmt(txData TxData) *big.Int {
+	effectiveTip := txData.GetGasPrice()
+	gasUsed := new(big.Int).SetUint64(txData.GetGas())
+	feeInit := new(big.Int).Mul(gasUsed, effectiveTip)
+	divisor := big.NewInt(1000)
+	feeAmt := new(big.Int).Div(feeInit, divisor)
+
+	feeAmtJudge := feeAmt.Mul(feeAmt, divisor)
+	if feeAmtJudge.Cmp(feeInit) != 0 {
+		feeAmt = feeAmt.Add(feeAmt, big.NewInt(1))
+	}
+	return feeAmt
+}
+
 // NewTx returns a reference to a new Ethereum transaction message.
 func NewTx(
 	chainID *big.Int, nonce uint64, to *common.Address, amount *big.Int,
@@ -312,10 +326,8 @@ func (msg *MsgEthereumTx) BuildTx(b client.TxBuilder, evmDenom string) (signing.
 	if err != nil {
 		return nil, err
 	}
-	effectiveTip := txData.GetGasPrice()
-	gasUsed := new(big.Int).SetUint64(txData.GetGas())
-	feeAmt := new(big.Int).Mul(gasUsed, effectiveTip)
-	feeAmt = feeAmt.Div(feeAmt, big.NewInt(1000)).Add(feeAmt, big.NewInt(1))
+
+	feeAmt := GetFeeAmt(txData)
 	fees := sdk.Coins{
 		{
 			Denom:  evmDenom,

@@ -499,10 +499,7 @@ func (vbd EthValidateBasicDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simu
 		params := vbd.evmKeeper.GetParams(ctx)
 
 		//TODO: 新增
-		effectiveTip := txData.GetGasPrice()
-		gasUsed := new(big.Int).SetUint64(txData.GetGas())
-		feeAmt := new(big.Int).Mul(gasUsed, effectiveTip)
-		feeAmt = feeAmt.Div(feeAmt, big.NewInt(1000)).Add(feeAmt, big.NewInt(1))
+		feeAmt := evmtypes.GetFeeAmt(txData)
 
 		ethFeeAmount := sdk.Coins{sdk.NewCoin(params.EvmDenom, sdk.NewIntFromBigInt(feeAmt))}
 
