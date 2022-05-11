@@ -42,7 +42,7 @@ func GetFeeAmt(txData TxData) *big.Int {
 	divisor := big.NewInt(1000)
 	feeAmt := new(big.Int).Div(feeInit, divisor)
 
-	feeAmtJudge := feeAmt.Mul(feeAmt, divisor)
+	feeAmtJudge := new(big.Int).Mul(feeAmt, divisor)
 	if feeAmtJudge.Cmp(feeInit) != 0 {
 		feeAmt = feeAmt.Add(feeAmt, big.NewInt(1))
 	}
