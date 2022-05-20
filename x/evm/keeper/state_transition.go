@@ -434,10 +434,6 @@ func (k *Keeper) RefundGas(msg core.Message, leftoverGas uint64, denom string) e
 		divisor := big.NewInt(1000)
 		feeAmt := new(big.Int).Div(remaining, divisor)
 
-		feeAmtJudge := new(big.Int).Mul(feeAmt, divisor)
-		if feeAmtJudge.Cmp(feeAmt) != 0 {
-			feeAmt = feeAmt.Sub(feeAmt, big.NewInt(1))
-		}
 		remaining := feeAmt
 		// positive amount refund
 		refundedCoins := sdk.Coins{sdk.NewCoin(denom, sdk.NewIntFromBigInt(remaining))}
