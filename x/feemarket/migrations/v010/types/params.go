@@ -17,15 +17,6 @@ var (
 	ParamStoreKeyElasticityMultiplier     = []byte("ElasticityMultiplier")
 	ParamStoreKeyBaseFee                  = []byte("BaseFee")
 	ParamStoreKeyEnableHeight             = []byte("EnableHeight")
-	ParamStoreKeyMinGasPrice              = []byte("MinGasPrice")
-	ParamStoreKeyMinGasMultiplier         = []byte("MinGasMultiplier")
-)
-
-var (
-	// DefaultMinGasMultiplier is 0.5 or 50%
-	DefaultMinGasMultiplier = sdk.NewDecWithPrec(50, 2)
-	// DefaultMinGasPrice is 0 (i.e disabled)
-	DefaultMinGasPrice = sdk.ZeroDec()
 )
 
 // ParamKeyTable returns the parameter key table.
@@ -34,23 +25,13 @@ func ParamKeyTable() paramtypes.KeyTable {
 }
 
 // NewParams creates a new Params instance
-func NewParams(
-	noBaseFee bool,
-	baseFeeChangeDenom,
-	elasticityMultiplier uint32,
-	baseFee uint64,
-	enableHeight int64,
-	minGasPrice sdk.Dec,
-	minGasPriceMultiplier sdk.Dec,
-) Params {
+func NewParams(noBaseFee bool, baseFeeChangeDenom, elasticityMultiplier uint32, baseFee uint64, enableHeight int64) Params {
 	return Params{
 		NoBaseFee:                noBaseFee,
 		BaseFeeChangeDenominator: baseFeeChangeDenom,
 		ElasticityMultiplier:     elasticityMultiplier,
 		BaseFee:                  sdk.NewIntFromUint64(baseFee),
 		EnableHeight:             enableHeight,
-		MinGasPrice:              minGasPrice,
-		MinGasMultiplier:         minGasPriceMultiplier,
 	}
 }
 
@@ -62,8 +43,6 @@ func DefaultParams() Params {
 		ElasticityMultiplier:     params.ElasticityMultiplier,
 		BaseFee:                  sdk.NewIntFromUint64(params.InitialBaseFee),
 		EnableHeight:             0,
-		MinGasPrice:              DefaultMinGasPrice,
-		MinGasMultiplier:         DefaultMinGasMultiplier,
 	}
 }
 
@@ -75,8 +54,6 @@ func (p *Params) ParamSetPairs() paramtypes.ParamSetPairs {
 		paramtypes.NewParamSetPair(ParamStoreKeyElasticityMultiplier, &p.ElasticityMultiplier, validateElasticityMultiplier),
 		paramtypes.NewParamSetPair(ParamStoreKeyBaseFee, &p.BaseFee, validateBaseFee),
 		paramtypes.NewParamSetPair(ParamStoreKeyEnableHeight, &p.EnableHeight, validateEnableHeight),
-		paramtypes.NewParamSetPair(ParamStoreKeyMinGasPrice, &p.MinGasPrice, validateMinGasPrice),
-		paramtypes.NewParamSetPair(ParamStoreKeyMinGasMultiplier, &p.MinGasMultiplier, validateMinGasPrice),
 	}
 }
 
@@ -94,11 +71,7 @@ func (p Params) Validate() error {
 		return fmt.Errorf("enable height cannot be negative: %d", p.EnableHeight)
 	}
 
-	if err := validateMinGasMultiplier(p.MinGasMultiplier); err != nil {
-		return err
-	}
-
-	return validateMinGasPrice(p.MinGasPrice)
+	return nil
 }
 
 func (p *Params) IsBaseFeeEnabled(height int64) bool {
@@ -157,44 +130,5 @@ func validateEnableHeight(i interface{}) error {
 		return fmt.Errorf("enable height cannot be negative: %d", value)
 	}
 
-	return nil
-}
-
-func validateMinGasPrice(i interface{}) error {
-	v, ok := i.(sdk.Dec)
-
-	if !ok {
-		return fmt.Errorf("invalid parameter type: %T", i)
-	}
-
-	if v.IsNil() {
-		return fmt.Errorf("invalid parameter: nil")
-	}
-
-	if v.IsNegative() {
-		return fmt.Errorf("value cannot be negative: %s", i)
-	}
-
-	return nil
-}
-
-func validateMinGasMultiplier(i interface{}) error {
-	v, ok := i.(sdk.Dec)
-
-	if !ok {
-		return fmt.Errorf("invalid parameter type: %T", i)
-	}
-
-	if v.IsNil() {
-		return fmt.Errorf("invalid parameter: nil")
-	}
-
-	if v.IsNegative() {
-		return fmt.Errorf("value cannot be negative: %s", v)
-	}
-
-	if v.GT(sdk.OneDec()) {
-		return fmt.Errorf("value cannot be greater than 1: %s", v)
-	}
 	return nil
 }

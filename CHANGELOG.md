@@ -36,13 +36,50 @@ Ref: https://keepachangelog.com/en/1.0.0/
 
 # Changelog
 
-## Unreleased
+## [v0.16.1] - 2022-06-09
+
+### Improvements
+
+* (feemarket) [tharsis#1120](https://github.com/oracleNetworkProtocol/ethermint/pull/1120) Make `min-gas-multiplier` parameter accept zero value
+
+### Bug Fixes
+
+* (evm) [tharsis#1118](https://github.com/oracleNetworkProtocol/ethermint/pull/1118) Fix `Type()` `Account` method `EmptyCodeHash` comparison
+
+## [v0.16.0] - 2022-06-06
+
+### State Machine Breaking
+
+* (feemarket) [tharsis#1105](https://github.com/oracleNetworkProtocol/ethermint/pull/1105) Update `BaseFee` calculation based on `GasWanted` instead of `GasUsed`.
+
+### API Breaking
+
+* (feemarket) [tharsis#1104](https://github.com/oracleNetworkProtocol/ethermint/pull/1104) Enforce a minimum gas price for Cosmos and EVM transactions through the `MinGasPrice` parameter.
+* (rpc) [tharsis#1081](https://github.com/oracleNetworkProtocol/ethermint/pull/1081) Deduplicate some json-rpc logic codes, cleanup several dead functions.
+* (ante) [tharsis#1062](https://github.com/oracleNetworkProtocol/ethermint/pull/1062) Emit event of eth tx hash in ante handler to support query failed transactions.
+* (analytics) [tharsis#1106](https://github.com/oracleNetworkProtocol/ethermint/pull/1106) Update telemetry to Ethermint modules.
+* (rpc) [tharsis#1108](https://github.com/oracleNetworkProtocol/ethermint/pull/1108) Update GetGasPrice RPC endpoint with global `MinGasPrice`
+
+### Improvements
+
+* (cli) [tharsis#1086](https://github.com/oracleNetworkProtocol/ethermint/pull/1086) Add rollback command.
+* (specs) [tharsis#1095](https://github.com/oracleNetworkProtocol/ethermint/pull/1095) Add more evm specs concepts.
+* (evm) [tharsis#1101](https://github.com/oracleNetworkProtocol/ethermint/pull/1101) Add tx_type, gas and counter telemetry for ethereum txs.
+
+### Bug Fixes
+
+* (rpc) [tharsis#1082](https://github.com/oracleNetworkProtocol/ethermint/pull/1082) fix gas price returned in getTransaction api.
+* (evm) [tharsis#1088](https://github.com/oracleNetworkProtocol/ethermint/pull/1088) Fix ability to append log in tx post processing.
+* (rpc) [tharsis#1081](https://github.com/oracleNetworkProtocol/ethermint/pull/1081) fix `debug_getBlockRlp`/`debug_printBlock` don't filter failed transactions.
+* (ante) [tharsis#1111](https://github.com/oracleNetworkProtocol/ethermint/pull/1111) Move CanTransfer decorator before GasConsume decorator
+* (types) [tharsis#1112](https://github.com/cosmos/ethermint/pull/1112) Add `GetBaseAccount` to avoid invalid account error when create vesting account.
 
 ## [v0.15.0] - 2022-05-09
 
 ### State Machine Breaking
 
 * (ante) [tharsis#1060](https://github.com/oracleNetworkProtocol/ethermint/pull/1060) Check `EnableCreate`/`EnableCall` in `AnteHandler` to short-circuit EVM transactions.
+* (evm) [tharsis#1087](https://github.com/oracleNetworkProtocol/ethermint/pull/1087) Minimum GasUsed proportional to GasLimit and `MinGasDenominator` EVM module param.
 
 ### API Breaking
 
@@ -67,6 +104,7 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ### API Breaking
 
 * (evm) [tharsis#1051](https://github.com/oracleNetworkProtocol/ethermint/pull/1051) Context block height fix on TraceTx. Removes `tx_index` on `QueryTraceTxRequest` proto type.
+* (evm) [tharsis#1091](https://github.com/oracleNetworkProtocol/ethermint/pull/1091) Add query params command on EVM Module
 
 ### Improvements
 
@@ -251,9 +289,9 @@ Ref: https://keepachangelog.com/en/1.0.0/
 * (rpc) [tharsis#661](https://github.com/oracleNetworkProtocol/ethermint/pull/661) Fix OOM bug when creating too many filters using JSON-RPC.
 * (evm) [tharsis#660](https://github.com/oracleNetworkProtocol/ethermint/pull/660) Fix `nil` pointer panic in `ApplyNativeMessage`.
 * (evm, test) [tharsis#649](https://github.com/oracleNetworkProtocol/ethermint/pull/649) Test DynamicFeeTx.
-* (evm) [tharsis#702](https://github.com/oracleNetworkProtocol/ethermint/pull/702) Fix panic in web3 RPC handlers
-* (rpc) [tharsis#720](https://github.com/oracleNetworkProtocol/ethermint/pull/720) Fix `debug_traceTransaction` failure
-* (rpc) [tharsis#741](https://github.com/oracleNetworkProtocol/ethermint/pull/741) Fix `eth_getBlockByNumberAndHash` return with non eth txs
+* (evm) [tharsis#702](https://github.com/oracleNetworkProtocol/ethermint/pull/702) Fix panic in web3 RPC handlers
+* (rpc) [tharsis#720](https://github.com/oracleNetworkProtocol/ethermint/pull/720) Fix `debug_traceTransaction` failure
+* (rpc) [tharsis#741](https://github.com/oracleNetworkProtocol/ethermint/pull/741) Fix `eth_getBlockByNumberAndHash` return with non eth txs
 * (rpc) [tharsis#743](https://github.com/oracleNetworkProtocol/ethermint/pull/743) Fix debug JSON RPC handler crash on non-existing block
 
 ### Improvements

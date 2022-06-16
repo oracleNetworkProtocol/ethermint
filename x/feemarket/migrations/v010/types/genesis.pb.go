@@ -27,7 +27,7 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type GenesisState struct {
 	// params defines all the paramaters of the module.
 	Params Params `protobuf:"bytes,1,opt,name=params,proto3" json:"params"`
-	// block gas is the amount of gas wanted on the last block before the upgrade.
+	// block gas is the amount of gas used on the last block before the upgrade.
 	// Zero by default.
 	BlockGas uint64 `protobuf:"varint,3,opt,name=block_gas,json=blockGas,proto3" json:"block_gas,omitempty"`
 }
@@ -77,14 +77,6 @@ func (m *GenesisState) GetBlockGas() uint64 {
 		return m.BlockGas
 	}
 	return 0
-}
-
-func init() {
-	proto.RegisterType((*GenesisState)(nil), "ethermint.feemarket.v1.GenesisState")
-}
-
-func init() {
-	proto.RegisterFile("ethermint/feemarket/v1/genesis.proto", fileDescriptor_6241c21661288629)
 }
 
 var fileDescriptor_6241c21661288629 = []byte{
