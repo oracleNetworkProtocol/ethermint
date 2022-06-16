@@ -11,8 +11,8 @@ import (
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	"github.com/tharsis/ethermint/x/evm/simulation"
-	"github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/simulation"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 // TestRandomizedGenState tests the normal scenario of applying RandomizedGenState.

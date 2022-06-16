@@ -14,10 +14,10 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	paramstypes "github.com/cosmos/cosmos-sdk/x/params/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 
-	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
-	ethermint "github.com/tharsis/ethermint/types"
+	"github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"

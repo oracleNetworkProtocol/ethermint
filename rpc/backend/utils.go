@@ -19,8 +19,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	tmrpctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/tharsis/ethermint/rpc/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/rpc/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 type txGasAndReward struct {

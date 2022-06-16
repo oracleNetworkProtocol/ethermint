@@ -27,10 +27,10 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	grpctypes "github.com/cosmos/cosmos-sdk/types/grpc"
 
-	"github.com/tharsis/ethermint/rpc/types"
-	ethermint "github.com/tharsis/ethermint/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
-	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
+	"github.com/oracleNetworkProtocol/ethermint/rpc/types"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
+	feemarkettypes "github.com/oracleNetworkProtocol/ethermint/x/feemarket/types"
 )
 
 var bAttributeKeyEthereumBloom = []byte(evmtypes.AttributeKeyEthereumBloom)

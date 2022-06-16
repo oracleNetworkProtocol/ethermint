@@ -15,9 +15,9 @@ import (
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/core/vm"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/tharsis/ethermint/tests"
-	"github.com/tharsis/ethermint/x/evm/statedb"
-	"github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/tests"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/statedb"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 func (suite *KeeperTestSuite) TestCreateAccount() {

@@ -15,10 +15,10 @@ import (
 
 	ethcrypto "github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/crypto/secp256k1"
-	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
-	"github.com/tharsis/ethermint/ethereum/eip712"
-	ethermint "github.com/tharsis/ethermint/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"
+	"github.com/oracleNetworkProtocol/ethermint/ethereum/eip712"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 var ethermintCodec codec.ProtoCodecMarshaler

@@ -10,10 +10,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
-	"github.com/tharsis/ethermint/rpc/types"
+	"github.com/oracleNetworkProtocol/ethermint/rpc/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 
 	// . "github.com/onsi/ginkgo"
 	// . "github.com/onsi/gomega"
@@ -28,9 +28,9 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient/gethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/tharsis/ethermint/server/config"
-	"github.com/tharsis/ethermint/testutil/network"
-	ethermint "github.com/tharsis/ethermint/types"
+	"github.com/oracleNetworkProtocol/ethermint/server/config"
+	"github.com/oracleNetworkProtocol/ethermint/testutil/network"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
 )
 
 // var _ = Describe("E2e", func() {
